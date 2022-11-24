@@ -14,18 +14,18 @@ const Navbar = () => {
      
 
     return (
-        <div>
+        <div className='text-center'>
             <Link to='/'>Home</Link>
             
             {
                 user?.uid ? <>
-                <Link onClick={handleLogout}>Logout</Link>
-                <Link to='/dashboard'>DashBoard</Link>
+                <Link className='ml-5' onClick={handleLogout}>Logout</Link>
+                <Link className='ml-5' to='/dashboard'>DashBoard</Link>
                 </>
                 :
                <>
-               <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
+               <Link className="ml-5"  to='/login'>Login</Link>
+            <Link    className="ml-5" to='/register'>Register</Link>
                </>
             }
         </div>

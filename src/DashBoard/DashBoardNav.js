@@ -11,7 +11,7 @@ const DashBoardNav = () => {
         <div>
             
             {
-                user?.email && userRole==="" && <Link>My orders</Link>
+                user?.email && userRole==="User" && <Link>My orders</Link>
             }
             
          {
