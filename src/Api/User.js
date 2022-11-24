@@ -5,7 +5,7 @@ export const saveUser =  async (email , name , role) =>{
         email:email,
         name:name,
         role: role,
-        verified: false
+        verified: "verify"
     }
   
     const res = await fetch('http://localhost:5000/users' , {

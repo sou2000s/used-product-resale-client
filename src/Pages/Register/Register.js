@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../../Api/User';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
     const {createUser,setUserNameAndProfile , setUserProfile } = useContext(AuthContext)
 
-
+  const navigate = useNavigate()
  const handleRegister = (e)=>{
     e.preventDefault()
     const name = e.target.name.value;
@@ -18,6 +19,7 @@ const Register = () => {
         console.log(res.user);
         saveUser(res.user.email , name , role).then(data => console.log(data))
         handleName(name)
+        navigate('/')
      })
      .catch(err => {
         console.log(err.message);

@@ -10,6 +10,8 @@ const CategoriousProducts = () => {
     const data = useLoaderData()
     console.log(data);
 
+
+
     return (
         <div>
             {
