@@ -50,7 +50,8 @@ const AddProducts = () => {
       categoryName: category,
       condition,
       description,
-      postTime: new Date()
+      postTime: new Date(),
+      satus: "available"
      
    } 
   
@@ -88,9 +89,11 @@ const AddProducts = () => {
   //   name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information.
 
   return (
-    <div>
+    <div className="text-center mt-8">
       <h1>Add Product</h1>
       <form onSubmit={handleAddProduct}>
+      <label htmlFor="">Product Name</label>
+      <br />
         <input
           type="text"
           name="productName"
@@ -98,6 +101,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
+        <label htmlFor="">OriginalPrice</label>
+      <br />
         <input
           type="number"
           placeholder="originalPrice"
@@ -105,6 +110,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
+        <label htmlFor="">ResaleingPrice</label>
+      <br />
         <input
           type="number"
           placeholder="resaleingPrice"
@@ -112,6 +119,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
+        <label htmlFor="">Select Condition</label>
+      <br />
         <select name="condition" id="">
             <option >excellent</option>
             <option >good</option>
@@ -124,12 +133,18 @@ const AddProducts = () => {
                 id='image'
                 name='image'
                 accept='image/*'
+                className="input input-bordered input-warning w-full max-w-xs pt-2"
               />
               <br />
-              <select name="category" id="">
+              <label  htmlFor="">Select category</label>
+              <br />
+              <select name="category" className="" id="">
                 <option>luxury car</option>
                 <option>electric car</option>
+                <option>minibus</option>
               </select>
+              <br />
+              <label htmlFor="">MobileNumber</label>
               <br />
         <input
           type="number"
@@ -138,6 +153,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
+        <label htmlFor="">Locationr</label>
+              <br />
         <input
           type="text"
           placeholder="location"
@@ -145,7 +162,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
-     
+        <label htmlFor="">YearOfBuying</label>
+              <br />
         <input
           type="text"
           placeholder="DD/MM/YY"
@@ -153,7 +171,8 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
-       
+        <label htmlFor="">Description</label>
+              <br />
         <textarea className="textarea textarea-warning" placeholder="description" name="description"></textarea>
         <br />
         {uploadLoading ? <div>Loading....</div> : 

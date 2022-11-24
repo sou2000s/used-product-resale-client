@@ -50,8 +50,8 @@ const AllSeller = () => {
 
 
     return (
-        <div>
-            <h1>All sellers</h1>
+        <div className='mt-5'>
+            <h1 className='mb-5 text-3xl ml-3'>All sellers</h1>
 
             <div className="overflow-x-auto">
   <table className="table w-full">

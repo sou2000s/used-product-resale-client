@@ -23,20 +23,26 @@ const Login = () => {
      }
      
     return (
-        <div>
+        <div className='text-center'>
             <form onSubmit={handleLogin}>
              
-             <label htmlFor="">email</label>
-             <input type="email" name='email'/>
-             <br />
             
+             <label htmlFor="">email</label>
+          
+             <input placeholder="email" type="email" name='email'  className="input ml-8 mt-6 input-bordered input-success w-full max-w-xs" />             <br />
+        
+           
+              
+             
+
              <br />
              <label htmlFor="">password</label>
        
-             <input type="password" name='password'/>
+            
+             <input placeholder="password" type="password" name='password'  className="input ml-4 mt-6 input-bordered input-success w-full max-w-xs" />
              <br />
              
-             <button type='submit' className='btn btn-accent'>Login</button>
+             <button type='submit' className='btn mt-5 btn-accent'>Login</button>
             </form>
         </div>
     );
