@@ -18,5 +18,5 @@ export const getOrders = async ( user,carPrice , carName , produtId) =>{
         body: JSON.stringify(placedOrder)
       })
       const data  = await res.json()
-      return data
+      return data;
 } 

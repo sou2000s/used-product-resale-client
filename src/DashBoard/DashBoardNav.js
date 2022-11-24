@@ -16,8 +16,8 @@ const DashBoardNav = () => {
             
          {
             userRole === "Seller Accout" && <>
-                <Link>Add products</Link>
-                <Link>My products</Link>
+                <Link to="addProducts">Add products</Link>
+                <Link to="myProducts">My products</Link>
             </>
          }
          {
