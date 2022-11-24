@@ -18,9 +18,11 @@ const Categories = () => {
 
     return (
         <div>
-            <h1>Select a Category</h1>
+            <h1 className='text-4xl'>Select a Category</h1>
              {
-                categories?.map((category , i) => <Link className='ml-11' to={`/category/${category.categoryName}`} key={category._id}>{category.categoryName}</Link>)
+                categories?.map((category , i) => <div className='flex  justify-center'>
+                <p className='mt-6 text-xl bg-[#EDBF69] rounded-xl p-5 '><Link className='' to={`/category/${category.categoryName}`} key={category._id}>{category.categoryName}</Link></p>
+                </div>)
              }
         </div>
     );

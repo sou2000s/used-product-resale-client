@@ -46,20 +46,25 @@ const handleName = (name) =>{
   <div className="mt-9 ">
   <form onSubmit={handleRegister}>
              <label htmlFor="">Name</label>
-              <input type="text" name='name'/>
+             <input type="text" placeholder="Name" name='name' className="ml-8 input   input-bordered input-success w-full max-w-xs" />
              <br />
              <label htmlFor="">email</label>
-             <input type="email" name='email'/>
-             <br />
+          
+             <input placeholder="email" type="email" name='email'  className="input ml-8 mt-6 input-bordered input-success w-full max-w-xs" />             <br />
              <label htmlFor="">Type</label>
-             <select name="role" id="">
-                <option selected>User</option>
-                <option>Seller Accout</option>
-             </select>
+           
+              
+             <select name='role' className="select select-success ml-8 w-full mt-6 max-w-xs">
+  <option  selected>User</option>
+  <option>Seller Accout</option>
+  
+</select>
+
              <br />
              <label htmlFor="">password</label>
        
-             <input type="password" name='password'/>
+            
+             <input placeholder="password" type="password" name='password'  className="input ml-4 mt-6 input-bordered input-success w-full max-w-xs" />
              <br />
              
              <button type='submit' className='btn btn-accent'>Register</button>

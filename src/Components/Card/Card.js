@@ -21,14 +21,17 @@ const Card = ({product ,setBoking}) => {
 
 console.log(checkverifyEmail);
     return (
-        <div className="  w-96 ">
+        <div className="  rounded-lg border ">
         <figure><img src={image} alt="" /></figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
            <p>{sellerEmail}</p>
           <p>Original Price: {originalPrice}$</p>
           <p>Reselling Price: {resaleingPrice}$</p>
-          <p>SellerName: {sellerName}</p>{checkverifyEmail.verified === "verified" && <p>verified seller</p>}
+          <div className='flex'>
+            <p>Seller Name:{sellerName}</p>
+            {checkverifyEmail.verified === "verified" && <img src="https://img.icons8.com/fluency/48/null/instagram-check-mark.png" className='w-8 mr-[183px]' alt=''/>}
+          </div>
           <p>Seller Number: {mobileNumber}</p>
           <p>Location for pickup: {location}</p>
           <p>Condition: {condition}</p>

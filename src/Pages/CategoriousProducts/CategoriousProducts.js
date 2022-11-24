@@ -13,7 +13,7 @@ const CategoriousProducts = () => {
 
 
     return (
-        <div>
+        <div className='grid  md:grid-cols-4 gap-3 mt-5'> 
             {
                 data?.map(product =>  <Card key={product._id}  setBoking={setBoking} product={product}></Card>)
             }

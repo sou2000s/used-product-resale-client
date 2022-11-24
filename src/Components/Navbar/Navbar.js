@@ -14,7 +14,7 @@ const Navbar = () => {
      
 
     return (
-        <div className='text-center'>
+        <div className='text-center p-6 bg-[#EDBF69]'>
             <Link to='/'>Home</Link>
             
             {

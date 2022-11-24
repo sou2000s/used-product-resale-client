@@ -5,12 +5,12 @@ import Categories from './Categories';
 const Home = () => {
     return (
         <div>
-        <div className='ml-28 '>
+        <div className='md:ml-28 '>
            <Banner/>
 
         </div>
            
-     <div className='mt-11 text-center'>
+     <div className='mt-11 mb-10 text-center'>
            <Categories/>
 
      </div>
