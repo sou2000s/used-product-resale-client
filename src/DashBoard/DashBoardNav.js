@@ -22,8 +22,8 @@ const DashBoardNav = () => {
          }
          {
             userRole === "admin" && <>
-                <Link>All sellers</Link>
-                <Link>All buyrs</Link>
+                <Link to="allsellers">All sellers</Link>
+                <Link to="allbuyrs">All buyrs</Link>
             </>
          }
 
