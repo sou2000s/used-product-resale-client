@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {FaHandPointRight} from 'react-icons/fa'
+
 const Banner = () => {
     return (
         <div>
