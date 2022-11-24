@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate, useNavigation } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const AddProducts = () => {
+
+  const {user} = useContext(AuthContext)
+
+  const [uploadLoading , setuploading] = useState(false)
+
+ const navigate = useNavigate()
+
   const handleAddProduct = (e) => {
     e.preventDefault();
    const form = e.target;
@@ -12,8 +22,10 @@ const AddProducts = () => {
    const condition = form.condition.value
    const resaleingPrice = form.resaleingPrice.value;
    const description = form.description.value;
-   const image = form.image.files[0]
-   console.log(productName,location,mobileNumber,originalPrice,yearOfBuying,condition,resaleingPrice , description,image);
+   const image = form.image.files[0];
+   const category = form.category.value;
+   
+
 
   const formData = new FormData()
   formData.append('image' , image)
@@ -24,7 +36,48 @@ const AddProducts = () => {
    }) 
    .then(res => res.json())
    .then(imageData => {
-    console.log(imageData.data.url);
+    // console.log(imageData.data.url);
+   const product = {
+      productName,
+      originalPrice,
+      resaleingPrice,
+      yearOfBuying,
+      image: imageData.data.url,
+      sellerName : user?.displayName,
+      sellerEmail: user?.email,
+      mobileNumber,
+      location,
+      categoryName: category,
+      condition,
+      description,
+      postTime: new Date()
+     
+   } 
+  
+
+
+    fetch('http://localhost:5000/products' , {
+      method: 'POST',
+      headers: {
+        "content-type": 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+    .then(res => res.json())
+    .then(data => {
+      setuploading(true)
+      console.log(data);
+      if(data.acknowledged){
+        setuploading(false)
+        form.reset()
+        toast.success('propuct adeded')
+        navigate('/dashboard/myProducts')
+
+      }
+    })
+
+
+
    })
 
   
@@ -73,6 +126,11 @@ const AddProducts = () => {
                 accept='image/*'
               />
               <br />
+              <select name="category" id="">
+                <option>luxury car</option>
+                <option>electric car</option>
+              </select>
+              <br />
         <input
           type="number"
           placeholder="mobileNumber"
@@ -98,6 +156,7 @@ const AddProducts = () => {
        
         <textarea className="textarea textarea-warning" placeholder="description" name="description"></textarea>
         <br />
+        {uploadLoading ? <div>Loading....</div> : 
         <input
           type="submit"
           value="Add product"
@@ -105,6 +164,8 @@ const AddProducts = () => {
           name=""
           id=""
         />
+        
+        }
       </form>
     </div>
   );
