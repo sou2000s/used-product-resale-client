@@ -51,7 +51,7 @@ const AddProducts = () => {
       condition,
       description,
       postTime: new Date(),
-      satus: "available"
+      status: "available"
      
    } 
   

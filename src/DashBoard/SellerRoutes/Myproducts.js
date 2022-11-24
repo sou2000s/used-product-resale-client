@@ -1,3 +1,4 @@
+
 import { useQuery } from '@tanstack/react-query';
 
 import React, { useContext, useEffect, useState } from 'react';
@@ -5,21 +6,53 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Myproducts = () => {
     const {user} = useContext(AuthContext)
-   const   [myProducts , setMyproducts] = useState([])
+//    const   [myProducts , setMyproducts] = useState([])
+   
+   const {data:myProducts , refetch} = useQuery({
+    queryKey: ['products' ],
+    queryFn: async()=>{
+        const res = await fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
+        const data = await res.json()
+        return data
+    }
+   })
    
    
-   useEffect(()=>{
-    fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
-    .then(res =>  res.json())
+//    useEffect(()=>{
+//     fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
+//     .then(res =>  res.json())
+//     .then(data => {
+//         console.log(data);
+//         setMyproducts(data)
+//     })
+//    },[user?.email])
+
+
+
+
+   const handleStatus = id =>{
+    fetch(`http://localhost:5000/sellers/products/update/${id}` , {
+        method: 'PUT'
+    })
+    .then(res => res.json())
     .then(data => {
         console.log(data);
-        setMyproducts(data)
+       refetch()
     })
-   },[user?.email])
+
+   }
 
 
-   const handleDelte = ()=>{
 
+   const handleDelte = (id)=>{
+
+     fetch(`http://localhost:5000/sellers/product/delete/${id}` , {
+        method: "DELETE"
+     })
+     .then(res => res.json())
+     .then(data =>{ console.log(data)
+      refetch()
+    })
    }
     return (
         <div className="overflow-x-auto mt-9">
@@ -31,9 +64,12 @@ const Myproducts = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>type</th>
-              <th>email</th>
-              <th>Action</th>
+              <th>categoryName</th>
+              <th>Change status</th>
+            
+              <th>Delete</th>
+              
+              
             </tr>
           </thead>
           <tbody>
@@ -42,7 +78,16 @@ const Myproducts = () => {
                 myProducts?.map((product , i) => <tr key={i}>
               <th>{i + 1}</th>
               <td>{product.productName}</td>
+              <td>{product.categoryName}</td>
               
+              <td>
+                <select name="" onChange={()=>handleStatus(product._id)}  id="">
+                  <option >{product.status}</option>
+                    
+                    {product.status === "available" && <option>sold</option>}
+                </select>
+              </td>
+
               <td>
               <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>
               
