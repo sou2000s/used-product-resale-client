@@ -1,12 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../../Api/User';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useToken } from '../../Hooks/useToken';
 
 const Register = () => {
     const {createUser,setUserNameAndProfile , setUserProfile } = useContext(AuthContext)
 
   const navigate = useNavigate()
+//  const [userEmail , setUserEmail] = useState('')
+//  const [token] = useToken(userEmail)
+
+//  if(token){
+//   navigate('/')
+//  }
+
  const handleRegister = (e)=>{
     e.preventDefault()
     const name = e.target.name.value;
@@ -16,8 +25,42 @@ const Register = () => {
 
      createUser(email , password)
      .then(res => {
-        console.log(res.user);
-        saveUser(res.user.email , name , role).then(data => console.log(data))
+       console.log(res.user);
+      //  saveUser(res.user.email , name , role).then(data => {
+      //    console.log(data)
+      //    setUserEmail(res.user.email)
+      //   })
+      const user = {
+        email:res.user.email,
+        name:name,
+        role: role,
+        verified: "verify"
+    }
+
+      fetch('http://localhost:5000/users' , {
+        method: "PUT",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+
+     })
+     .then(res => res.json())
+     .then(data => {
+      if(data.acknowledged){
+        toast.success('welcome')
+        fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+        .then(res => res.json())
+        .then(data=> {
+          if(data.accessToken){
+            localStorage.setItem('token' , data.accessToken)
+          }
+        })
+      }
+     })
+        
+    
+
         handleName(name)
         navigate('/')
      })

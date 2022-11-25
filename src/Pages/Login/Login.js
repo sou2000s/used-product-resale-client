@@ -18,6 +18,13 @@ const Login = () => {
         login(email , password)
         .then(res =>{
             navigate(from, { replace: true })
+         fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+        .then(res => res.json())
+        .then(data=> {
+          if(data.accessToken){
+            localStorage.setItem('token' , data.accessToken)
+          }
+        })
         })
         .catch(err => console.log(err.message))
      }

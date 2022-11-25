@@ -65,7 +65,9 @@ const routes = createBrowserRouter([
          {
             path:"myOrders",
             element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
-         }
+         },
+        
+         
         ]
     }
 ])
