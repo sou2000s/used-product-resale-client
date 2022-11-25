@@ -21,6 +21,11 @@ const {data:myOrders , refetch} = useQuery({
     }
 })
 
+  const payNow = product =>{
+    console.log(product);
+  }
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -50,9 +55,14 @@ const {data:myOrders , refetch} = useQuery({
               
 
               <td>
-              <Link to={`/dashboard/payment/${product._id}`}>Pay now</Link>
-              
+               {
+                 product.paid  ? <p>paid</p> :  <Link to={`/payment/${product._id}`}>Pay now</Link>            
+               }
               </td>
+
+             { <td>
+                <button onClick={()=>payNow(product)}>check</button>
+              </td>}
              
              
             </tr>)

@@ -81,11 +81,7 @@ const Myproducts = () => {
               <td>{product.categoryName}</td>
               
               <td>
-                <select name="" onChange={()=>handleStatus(product._id)}  id="">
-                  <option >{product.status}</option>
-                    
-                    {product.status === "available" && <option>sold</option>}
-                </select>
+               {product.paid ? <p>sold</p> : <p>available</p>}
               </td>
 
               <td>

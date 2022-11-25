@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AllBuyrs from "../DashBoard/AdminRoutes/AllBuyrs";
 import AllSeller from "../DashBoard/AdminRoutes/AllSeller";
 import DashBoardLayout from "../DashBoard/DashBoardLayout/DashBoardLayout";
+import Payment from "../DashBoard/Payment/Payment";
 import AddProducts from "../DashBoard/SellerRoutes/AddProducts";
 import Myproducts from "../DashBoard/SellerRoutes/Myproducts";
 import MyOrders from "../DashBoard/UserRoute/MyOrders";
@@ -69,6 +70,14 @@ const routes = createBrowserRouter([
         
          
         ]
+    },
+
+    {
+        path:"/payment/:id",
+        loader:  ({params})=>{
+            return fetch(`http://localhost:5000/orderdProduct/${params.id}`)
+        },
+        element: <Payment/>
     }
 ])
 
