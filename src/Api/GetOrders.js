@@ -1,6 +1,6 @@
 
 
-export const getOrders = async ( user,carPrice , carName , _id , image , location , sellerPhoneNumber) =>{
+export const getOrders = async ( user,carPrice , carName , _id , image , meetingLocation , buyrPhoneNumber) =>{
      const placedOrder = {
         buyrName: user.displayName,
         buyrEmail: user.email,
@@ -8,8 +8,8 @@ export const getOrders = async ( user,carPrice , carName , _id , image , locatio
         productPrice: carPrice,
         produtId : _id,
         productImage: image,
-        location: location ,
-        sellerPhoneNumber 
+        meetingLocation,
+        buyrPhoneNumber        
 
      }
 

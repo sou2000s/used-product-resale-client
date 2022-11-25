@@ -13,10 +13,13 @@ const Modal = ({boking , setBoking}) => {
  const handleBooking = e =>{
     e.preventDefault()
     console.log(e.target);
-    const price = e.target.carPrice.value
-    const carName = e.target.carName.value
+   //  const price = e.target.carPrice.value
+   //  const carName = e.target.carName.value
+
+   const meetingLocation = e.target.meetingLocation.value;
+   const buyrPhoneNumber = e.target.buyrPhoneNumber.value;
   
-    getOrders(user,resaleingPrice , productName , _id , image , location , mobileNumber).then((data)=>{
+    getOrders(user,resaleingPrice , productName , _id , image , meetingLocation , buyrPhoneNumber).then((data)=>{
        if(data.acknowledged){
          toast.success('order placed')
        }
@@ -52,15 +55,15 @@ const Modal = ({boking , setBoking}) => {
   <br />
   <label htmlFor="">Your name</label>
   <br />
-  <input type="text" placeholder="Type here" readOnly defaultValue={user?.displayName} className="input input-bordered input-warning w-full max-w-xs" />
+  <input type="text"  placeholder="Type here" readOnly defaultValue={user?.displayName} className="input input-bordered input-warning w-full max-w-xs" />
   <br />
-  <label htmlFor="">Pick up Address</label>
+  <label htmlFor="">Meeting Location</label>
   <br />
-  <input type="text" placeholder="Type here" readOnly defaultValue={location} className="input input-bordered input-warning w-full max-w-xs" />
+  <input type="text" name='meetingLocation' placeholder="meeting address"  className="input input-bordered input-warning w-full max-w-xs" />
   <br />
-  <label htmlFor="">Seller Phone Number</label>
+  <label htmlFor="">Your  Phone Number</label>
   <br />
-  <input type="text" placeholder="Type here" readOnly defaultValue={mobileNumber} className="input input-bordered input-warning w-full max-w-xs" />
+  <input type="text" placeholder="give your number"  name='buyrPhoneNumber' className="input input-bordered input-warning w-full max-w-xs" />
   <br />
    
 

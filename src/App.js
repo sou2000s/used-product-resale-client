@@ -3,7 +3,7 @@ import routes from "./Routes/Routes";
 import { Toaster } from "react-hot-toast";
 function App() {
   return (
-    <div className="App">
+    <div className="bg-[#696fe9]">
         <RouterProvider router={routes}></RouterProvider>        
         <Toaster/>
     </div>

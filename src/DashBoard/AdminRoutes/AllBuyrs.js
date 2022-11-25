@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllBuyrs = () => {
 
@@ -22,7 +23,10 @@ const AllBuyrs = () => {
         method:"DELETE"
      })
      .then(res => res.json())
-     .then(data => {console.log(data)
+     .then(data => {
+      if(data.deletedCount){
+        toast.success('buyr deleted')
+      }
       refetch()
     })
    }

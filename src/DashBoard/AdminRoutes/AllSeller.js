@@ -20,15 +20,24 @@ const AllSeller = () => {
     })
 
 
- const handleDelte = id =>{
-   
-  fetch(`http://localhost:5000/users/allSellers/${id}` , {
+ const handleDelte = seller =>{
+   console.log(seller);
+  fetch(`http://localhost:5000/users/allSellers/${seller._id}` , {
     method: 'DELETE'        
   })
   .then(res => res.json())
   .then(data => {
     if(data.deletedCount){
-        toast.success('seller deleted successfully')
+        // toast.success('seller deleted successfully')
+         fetch(`http://localhost:5000/sellerProducts/delete?email=${seller.email}`,{
+          method: "DELETE"
+         })
+         .then(res => res.json())
+         .then(data =>{
+          console.log(data)
+          toast.success('seller deleted successfully')
+         })
+       
         refetch()
     }
   })
@@ -79,7 +88,7 @@ const AllSeller = () => {
         <td>{seller.email}</td>
         <td>
         <button className='btn btn-sm btn-success' onClick={()=>handleVerify(seller._id)}>{seller.verified==="verified"  ?' verified' : 'verifiy'}</button>
-        <button className='btn btn-sm btn-error' onClick={()=>handleDelte(seller._id)}>Delete</button>
+        <button className='btn btn-sm btn-error' onClick={()=>handleDelte(seller)}>Delete</button>
         
         </td>
        

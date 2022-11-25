@@ -17,13 +17,17 @@ const Categories = () => {
 
 
     return (
-        <div>
-            <h1 className='text-4xl'>Select a Category</h1>
+        <div className='bg-[#375042]'>
+            <h1 className='text-4xl text-white'>Select a Category</h1>
+             <div className='md:flex justify-center'>
              {
-                categories?.map((category , i) => <div className='flex  justify-center'>
-                <p className='mt-6 text-xl bg-[#EDBF69] rounded-xl p-5 '><Link className='' to={`/category/${category.categoryName}`} key={category._id}>{category.categoryName}</Link></p>
+                categories?.map((category , i) => <div className='p-5 mt-6' key={i}>
+             
+                <Link className='mt-6  bg-[#EDBF69] rounded-xl p-2 md:p-5 ' to={`/category/${category.categoryName}`} key={category._id}>{category.categoryName}</Link>
+              
                 </div>)
              }
+             </div>
         </div>
     );
 };
