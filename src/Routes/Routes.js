@@ -4,6 +4,7 @@ import AllSeller from "../DashBoard/AdminRoutes/AllSeller";
 import DashBoardLayout from "../DashBoard/DashBoardLayout/DashBoardLayout";
 import AddProducts from "../DashBoard/SellerRoutes/AddProducts";
 import Myproducts from "../DashBoard/SellerRoutes/Myproducts";
+import MyOrders from "../DashBoard/UserRoute/MyOrders";
 import Main from "../Layouts/Main";
 import CategoriousProducts from "../Pages/CategoriousProducts/CategoriousProducts";
 import Home from "../Pages/Home/Home";
@@ -61,6 +62,10 @@ const routes = createBrowserRouter([
             path:'myProducts',
             element:<SellerRoute><Myproducts/></SellerRoute>
          },
+         {
+            path:"myOrders",
+            element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+         }
         ]
     }
 ])
