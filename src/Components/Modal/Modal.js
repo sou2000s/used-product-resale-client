@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { getOrders } from '../../Api/GetOrders';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -16,7 +17,9 @@ const Modal = ({boking , setBoking}) => {
     const carName = e.target.carName.value
   
     getOrders(user,resaleingPrice , productName , _id , image , location , mobileNumber).then((data)=>{
-        console.log(data);
+       if(data.acknowledged){
+         toast.success('order placed')
+       }
         setBoking(null)
     })
  
