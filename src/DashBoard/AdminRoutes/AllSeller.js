@@ -9,7 +9,7 @@ const AllSeller = () => {
     const {data:allSellers , refetch} = useQuery({
          queryKey: ['allSellers'],
          queryFn: async()=>{
-            const res = await fetch("https://server-site-used-products.vercel.app/users/allSellers",{
+            const res = await fetch("http://localhost:5000/users/allSellers",{
                headers:{
                 authorization: `Bearer ${localStorage.getItem('token')}`
                }
@@ -22,14 +22,14 @@ const AllSeller = () => {
 
  const handleDelte = seller =>{
    console.log(seller);
-  fetch(`https://server-site-used-products.vercel.app/users/allSellers/${seller._id}` , {
+  fetch(`http://localhost:5000/users/allSellers/${seller._id}` , {
     method: 'DELETE'        
   })
   .then(res => res.json())
   .then(data => {
     if(data.deletedCount){
         // toast.success('seller deleted successfully')
-         fetch(`https://server-site-used-products.vercel.app/sellerProducts/delete?email=${seller.email}`,{
+         fetch(`http://localhost:5000/sellerProducts/delete?email=${seller.email}`,{
           method: "DELETE"
          })
          .then(res => res.json())
@@ -46,7 +46,7 @@ const AllSeller = () => {
 
 
  const handleVerify = (id) =>{
-  fetch(`https://server-site-used-products.vercel.app/users/allsellers/verified/${id}`,{
+  fetch(`http://localhost:5000/users/allsellers/verified/${id}`,{
     method: "PUT"
   })
   .then(res => res.json())

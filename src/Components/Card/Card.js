@@ -10,7 +10,7 @@ const Card = ({product ,setBoking}) => {
   
 
     useEffect(()=>{
-      fetch(`https://server-site-used-products.vercel.app/sellers?email=${sellerEmail}`)
+      fetch(`http://localhost:5000/sellers?email=${sellerEmail}`)
       .then(res => res.json())
       .then(data=> {
         

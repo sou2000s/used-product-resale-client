@@ -11,7 +11,7 @@ const Myproducts = () => {
    const {data:myProducts , refetch} = useQuery({
     queryKey: ['products' ],
     queryFn: async()=>{
-        const res = await fetch(`https://server-site-used-products.vercel.app/sellers/products?email=${user?.email}`)
+        const res = await fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
         const data = await res.json()
         return data
     }
@@ -19,7 +19,7 @@ const Myproducts = () => {
    
    
 //    useEffect(()=>{
-//     fetch(`https://server-site-used-products.vercel.app/sellers/products?email=${user?.email}`)
+//     fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
 //     .then(res =>  res.json())
 //     .then(data => {
 //         console.log(data);
@@ -28,25 +28,44 @@ const Myproducts = () => {
 //    },[user?.email])
 
 
+// http://localhost:5000/
 
 
-   const handleStatus = id =>{
-    fetch(`https://server-site-used-products.vercel.app/sellers/products/update/${id}` , {
-        method: 'PUT'
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-       refetch()
-    })
+const handleAddtoAd = product =>{
+  const addvertiseProduct = {
+    productId: product._id
+  }
 
-   }
+  console.log(product);
+  fetch('http://localhost:5000/advertise' , {
+    method: "POST",
+    headers: {
+      "content-type": 'application/json'
+    },
+    body: JSON.stringify(addvertiseProduct)
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+}
+
+
+  //  const handleStatus = id =>{
+  //   fetch(`http://localhost:5000/sellers/products/update/${id}` , {
+  //       method: 'PUT'
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //       console.log(data);
+  //      refetch()
+  //   })
+
+  //  }
 
 
 
    const handleDelte = (id)=>{
 
-     fetch(`https://server-site-used-products.vercel.app/sellers/product/delete/${id}` , {
+     fetch(`http://localhost:5000/sellers/product/delete/${id}` , {
         method: "DELETE"
      })
      .then(res => res.json())
@@ -65,9 +84,10 @@ const Myproducts = () => {
               <th></th>
               <th>Name</th>
               <th>categoryName</th>
-              <th>Change status</th>
+              <th>status</th>
             
               <th>Delete</th>
+              <th>Boost</th>
               
               
             </tr>
@@ -88,6 +108,8 @@ const Myproducts = () => {
               <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>
               
               </td>
+
+              <td>{!product.paid && <button onClick={()=>handleAddtoAd(product)}>Advertise</button>}</td>
              
              
             </tr>)

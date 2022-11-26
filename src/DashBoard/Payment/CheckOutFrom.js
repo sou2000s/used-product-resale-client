@@ -17,7 +17,7 @@ const CheckOutFrom = ({booking}) => {
 
 
   useEffect(()=>{
-    fetch('https://server-site-used-products.vercel.app/create-payment-intent',{
+    fetch('http://localhost:5000/create-payment-intent',{
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
@@ -80,7 +80,7 @@ const CheckOutFrom = ({booking}) => {
         bookingId: produtId
     }
 
-   fetch('https://server-site-used-products.vercel.app/payments',{
+   fetch('http://localhost:5000/payments',{
     method: 'POST',
     headers:{
         'content-type': 'application/json',

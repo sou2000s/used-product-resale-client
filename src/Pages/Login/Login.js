@@ -18,7 +18,7 @@ const Login = () => {
         login(email , password)
         .then(res =>{
             navigate(from, { replace: true })
-         fetch(`https://server-site-used-products.vercel.app/jwt?email=${res.user.email}`)
+         fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
         .then(res => res.json())
         .then(data=> {
           if(data.accessToken){

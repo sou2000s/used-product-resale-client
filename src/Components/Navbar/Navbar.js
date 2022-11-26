@@ -14,7 +14,7 @@ const Navbar = () => {
      
 
     return (
-        <div className='text-center p-6 bg-[#EDBF69]'>
+        <div className='text-center p-6 text-white bg-[#100d07]'>
             <Link to='/'>Home</Link>
             
             {

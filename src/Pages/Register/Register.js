@@ -37,7 +37,7 @@ const Register = () => {
         status: "unverified"
     }
 
-      fetch('https://server-site-used-products.vercel.app/users' , {
+      fetch('http://localhost:5000/users' , {
         method: "PUT",
         headers: {
             'content-type': 'application/json'
@@ -49,7 +49,7 @@ const Register = () => {
      .then(data => {
       if(data.acknowledged){
         toast.success('welcome')
-        fetch(`https://server-site-used-products.vercel.app/jwt?email=${res.user.email}`)
+        fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
         .then(res => res.json())
         .then(data=> {
           if(data.accessToken){
