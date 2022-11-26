@@ -5,13 +5,24 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBQrSBC_UV8FJ73DGynbyT5uNzPmNYSwkM",
-  authDomain: "use-product-resale.firebaseapp.com",
-  projectId: "use-product-resale",
-  storageBucket: "use-product-resale.appspot.com",
-  messagingSenderId: "909377317661",
-  appId: "1:909377317661:web:4a8df1b24103ec3bb54ff4"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain ,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
+
+
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBQrSBC_UV8FJ73DGynbyT5uNzPmNYSwkM",
+//   authDomain: "use-product-resale.firebaseapp.com",
+//   projectId: "use-product-resale",
+//   storageBucket: "use-product-resale.appspot.com",
+//   messagingSenderId: "909377317661",
+//   appId: "1:909377317661:web:4a8df1b24103ec3bb54ff4"
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

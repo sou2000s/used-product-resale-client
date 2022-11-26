@@ -37,7 +37,7 @@ const routes = createBrowserRouter([
             {
                 path:'/category/:categoryName',
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/products/${params.categoryName}`)
+                    return fetch(`https://server-site-used-products.vercel.app/products/${params.categoryName}`)
                 },
                 element:<PrivateRoute><CategoriousProducts/></PrivateRoute>
             },
@@ -75,7 +75,7 @@ const routes = createBrowserRouter([
     {
         path:"/payment/:id",
         loader:  ({params})=>{
-            return fetch(`http://localhost:5000/orderdProduct/${params.id}`)
+            return fetch(`https://server-site-used-products.vercel.app/orderdProduct/${params.id}`)
         },
         element: <Payment/>
     }

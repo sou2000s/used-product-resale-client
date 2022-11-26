@@ -4,15 +4,17 @@ import { useNavigate, useNavigation } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const AddProducts = () => {
+  const [addProductLoading , setaddProductLoading ] = useState(false)
 
   const {user} = useContext(AuthContext)
 
-  const [uploadLoading , setuploading] = useState(false)
+ 
 
  const navigate = useNavigate()
 
   const handleAddProduct = (e) => {
     e.preventDefault();
+    setaddProductLoading(true)
    const form = e.target;
    const productName = form.productName.value;
    const originalPrice = form.originalPrice.value;
@@ -57,7 +59,7 @@ const AddProducts = () => {
   
 
 
-    fetch('http://localhost:5000/products' , {
+    fetch('https://server-site-used-products.vercel.app/products' , {
       method: 'POST',
       headers: {
         "content-type": 'application/json'
@@ -66,10 +68,10 @@ const AddProducts = () => {
     })
     .then(res => res.json())
     .then(data => {
-      setuploading(true)
+    
       console.log(data);
       if(data.acknowledged){
-        setuploading(false)
+        setaddProductLoading(false)
         form.reset()
         toast.success('propuct adeded')
         navigate('/dashboard/myProducts')
@@ -175,7 +177,7 @@ const AddProducts = () => {
               <br />
         <textarea className="textarea textarea-warning" placeholder="description" name="description"></textarea>
         <br />
-        {uploadLoading ? <div>Loading....</div> : 
+        {addProductLoading ? <div>Loading....</div> : 
         <input
           type="submit"
           value="Add product"
