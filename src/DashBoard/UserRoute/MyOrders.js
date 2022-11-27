@@ -28,7 +28,7 @@ refetch()
 
 
     return (
-        <div>
+        <div className='mt-8'>
             <div className="overflow-x-auto">
   <table className="table w-full">
    

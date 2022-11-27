@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Myproducts = () => {
@@ -75,7 +76,10 @@ const handleAddtoAd = product =>{
         method: "DELETE"
      })
      .then(res => res.json())
-     .then(data =>{ console.log(data)
+     .then(data =>{ 
+      if(data.deletedCount){
+        toast.success('product deleted')
+      }
       refetch()
     })
    }
@@ -111,7 +115,7 @@ const handleAddtoAd = product =>{
               </td>
 
               <td>
-              <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>
+              {!product.paid && <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>}
               
               </td>
 

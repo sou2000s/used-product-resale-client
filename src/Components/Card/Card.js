@@ -27,8 +27,8 @@ console.log(checkverifyEmail);
           <h2 className="card-title">{productName}</h2>
           {checkverifyEmail.status === "verified" &&  <p>Upload by verified seller</p>}
            <p>{sellerEmail}</p>
-          <p>Original Price: {originalPrice}$</p>
-          <p>Reselling Price: {resaleingPrice}$</p>
+          <p>Original Price: {originalPrice}Rs/only</p>
+          <p>Reselling Price: {resaleingPrice}Rs/only</p>
           <div className='flex'>
             <p>Seller Name:{sellerName}</p>
             {checkverifyEmail.status === "verified" && <img src="https://img.icons8.com/fluency/48/null/instagram-check-mark.png" className='md:w-8  mr-[183px]' alt=''/> }
@@ -41,7 +41,7 @@ console.log(checkverifyEmail);
           <p>Posted time: {postTime}</p>
           {paid && <p>sold</p>}
           <div className="card-actions justify-end">
-          <label onClick={()=> setBoking(product)} htmlFor="my-modal"   className="btn btn-warning" >{paid ? "soldout" : "book now"}</label>
+          <label onClick={()=> setBoking(product)} htmlFor="my-modal"   className={`${paid ? "btn btn-error" :" btn btn-warning"}`} >{paid ? "soldout" : "book now"}</label>
           </div>
         </div>
       </div>

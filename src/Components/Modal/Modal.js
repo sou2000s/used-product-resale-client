@@ -47,7 +47,7 @@ const Modal = ({boking , setBoking}) => {
   <br />
   <label htmlFor="">You have to pay</label>
   <br />
-  <input type="text" placeholder="Type here" name='carPrice'  defaultValue={resaleingPrice} readOnly  className="input input-bordered input-warning w-full max-w-xs" />
+  <input type="text" placeholder="Type here" name='carPrice'  defaultValue={resaleingPrice} readOnly  className="input input-bordered input-warning w-full max-w-xs" /> 
   <br />
   <label htmlFor="">Your email</label>
   <br />

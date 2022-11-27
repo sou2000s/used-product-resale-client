@@ -34,7 +34,7 @@ const AllBuyrs = () => {
     return (
         <div>
            <div className='mt-5'>
-            <h1 className='mb-5 text-3xl ml-3'>All buyrs</h1>
+            <h1 className='mb-5 text-3xl ml-3'>All buyers</h1>
 
             <div className="overflow-x-auto">
   <table className="table w-full">

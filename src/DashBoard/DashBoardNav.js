@@ -14,7 +14,7 @@ const DashBoardNav = () => {
          <div className='text-center mt-7'>
             
             {
-                user?.email && userRole==="User" && <Link to='myOrders'>My orders</Link>
+                user?.email && userRole==="User" && <Link className='bg-[#EDBF69] p-3 rounded-xl border ' to='myOrders'>My orders</Link>
             }
             
          {
