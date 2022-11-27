@@ -4,20 +4,24 @@ import Categories from './Categories';
 import bannerCar from '../../images/bannerCar.png'
 import car2 from '../../images/humphrey-muleba-T-WRLSsiZYE-unsplash.jpg'
 import car3 from '../../images/stephen-leonardi-OnHZTmU7WKQ-unsplash.jpg'
+import { useQuery } from '@tanstack/react-query';
+import { contains } from '@firebase/util';
+import Advertisements from './Advertisements';
 const Home = () => {
- const [advertisementIndex , setAdvertiseIndex] = useState(0)
- const [alldvertise , setAlladvertise] = useState([bannerCar ,car2 , car3 ])
 
-// useEffect(()=>{
-//   setInterval(()=>{
-//     setAdvertiseIndex(setAdvertiseIndex => setAdvertiseIndex < alldvertise.length ? advertisementIndex + 1 : 0)
-//   },3000)
-// },[alldvertise , advertisementIndex])
- 
+const [addvertiseProduct , setAvertiseProducts] = useState([])
+  
+useEffect(()=>{
+fetch('http://localhost:5000/advertiseProducts')
+.then(res => res.json())
+.then(data =>setAvertiseProducts(data))
+} , [])
+
+
 
 
     return (
-        <div className='bg-[#0D0D0D] md:h-screen text-white'>
+        <div className='bg-[#0D0D0D]  text-white'>
         <div className=' '>
         <div className="hero   text-white">
   <div className="hero-content flex-col lg:flex-row-reverse">
@@ -41,17 +45,37 @@ const Home = () => {
 
      </div>
        
-  <hr  className='md:mt-24'/>
-        
+  {/* <hr  className='md:mt-24'/> */}
 
-       <div className='md:mt-12 '>
-        <h1 className='text-center'>Advertisement</h1>
-        
-           
-       {/* <img src={alldvertise[advertisementIndex]} className="w-60" alt="" /> */}
 
+  <div className='md:mt-32'>
+  <h1 className='text-center pb-4 text-2xl'>We make sure</h1>
+    <ul className='md:flex justify-evenly  md:p-0 p-5 '>
+      <li className='p-6  md:rounded-none rounded-md bg-[#3c2f2f]'>Full engine checkup</li>
+      <li className='p-6   md:mt-0 md:rounded-none rounded-md  mt-6 bg-[#3c2f2f]'>Conditon check</li>
+      <li className='p-6   md:mt-0 md:rounded-none rounded-md  mt-6  bg-[#3c2f2f]'>Valid paper check </li>
+    </ul>
+  </div>
+        
+  
+       {/* {
+        addvertiseProduct.length &&  <div>
+        <Advertisements product = {addvertiseProduct} />
        </div>
+  
+       } */}
+      
+            
+       
+          {addvertiseProduct.length ? <div className='pt-32 bg-[#0D0D0D]'>
+            <h1 className='text-center mb-6 text-2xl'>Advertisements</h1>
+            <Advertisements  product={addvertiseProduct}   />
+          </div> : ''}
 
+
+        
+          
+              
         </div>
     );
 };

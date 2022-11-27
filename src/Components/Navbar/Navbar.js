@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useUserRole } from '../../Hooks/useUserRole';
 
 const Navbar = () => {
      const {logout , user} = useContext(AuthContext)
+     
      const handleLogout = ()=>{
         logout()
         .then(()=>{})
@@ -28,6 +30,7 @@ const Navbar = () => {
             <Link    className="ml-5" to='/register'>Register</Link>
                </>
             }
+         
         </div>
     );
 };

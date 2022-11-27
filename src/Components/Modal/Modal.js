@@ -9,7 +9,7 @@ const Modal = ({boking , setBoking}) => {
  console.log(boking);
 
  const {categoryName , image,_id,mobileNumber,resaleingPrice , location , productName} = boking
-
+ 
  const handleBooking = e =>{
     e.preventDefault()
     console.log(e.target);
@@ -38,7 +38,7 @@ const Modal = ({boking , setBoking}) => {
 {/* Put this part before </body> tag */}
 <input type="checkbox" id="my-modal" className="modal-toggle" />
 <div className="modal">
-  <div className="modal-box">
+  <div className="modal-box text-black">
    
   <form onSubmit={handleBooking}>
   <label htmlFor="">Product Name</label>

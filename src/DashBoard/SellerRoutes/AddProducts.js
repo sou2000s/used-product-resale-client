@@ -11,6 +11,9 @@ const AddProducts = () => {
  
 
  const navigate = useNavigate()
+ 
+ const time = new Date()
+ const timeInTwentyFourHourFormat =   time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 
   const handleAddProduct = (e) => {
     e.preventDefault();
@@ -52,7 +55,8 @@ const AddProducts = () => {
       categoryName: category,
       condition,
       description,
-      postTime: new Date(),
+      postTime: timeInTwentyFourHourFormat,
+      postDate: new Date(),
       status: "available"
      
    } 
@@ -62,7 +66,8 @@ const AddProducts = () => {
     fetch('http://localhost:5000/products' , {
       method: 'POST',
       headers: {
-        "content-type": 'application/json'
+        "content-type": 'application/json',
+        authorization: `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify(product)
     })

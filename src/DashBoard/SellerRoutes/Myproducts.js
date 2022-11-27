@@ -33,7 +33,13 @@ const Myproducts = () => {
 
 const handleAddtoAd = product =>{
   const addvertiseProduct = {
-    productId: product._id
+    productId: product._id,
+    productName: product.productName,
+    condition: product.condition,
+    price: product.resaleingPrice,
+    image: product.image
+
+
   }
 
   console.log(product);
@@ -109,7 +115,7 @@ const handleAddtoAd = product =>{
               
               </td>
 
-              <td>{!product.paid && <button onClick={()=>handleAddtoAd(product)}>Advertise</button>}</td>
+              <td>{!product.paid && <button className='btn btn-info'  onClick={()=>handleAddtoAd(product)}>Advertise your product</button>}</td>
              
              
             </tr>)

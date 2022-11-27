@@ -77,7 +77,7 @@ const routes = createBrowserRouter([
         loader:  ({params})=>{
             return fetch(`http://localhost:5000/orderdProduct/${params.id}`)
         },
-        element: <Payment/>
+        element:<Payment/>
     }
 ])
 

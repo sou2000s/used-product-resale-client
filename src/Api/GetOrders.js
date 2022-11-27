@@ -6,7 +6,7 @@ export const getOrders = async ( user,carPrice , carName , _id , image , meeting
         buyrEmail: user.email,
         productName: carName,
         productPrice: carPrice,
-        produtId : _id,
+        productId : _id,
         productImage: image,
         meetingLocation,
         buyrPhoneNumber        

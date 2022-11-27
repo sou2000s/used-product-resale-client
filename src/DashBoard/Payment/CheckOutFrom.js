@@ -8,25 +8,36 @@ const CheckOutFrom = ({booking}) => {
   const [transactionId , setTransactionId ] = useState('')
    const [clientSecret  , setClientSecret] = useState('') 
     console.log(booking);
-    const {productPrice ,buyrName , buyrEmail , produtId } = booking
+    const {productPrice ,buyrName , buyrEmail , productId } = booking
     const priceIntoNumber = parseInt(productPrice)
      
     const stripe = useStripe()
 
     const elemets = useElements()
+console.log(priceIntoNumber);
+console.log(productId , buyrEmail , buyrName , priceIntoNumber);
+
+
 
 
   useEffect(()=>{
     fetch('http://localhost:5000/create-payment-intent',{
         method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+          'content-type': 'application/json',
+           
         },
         body: JSON.stringify({priceIntoNumber})
     })
     .then(res => res.json())
-    .then(data => setClientSecret(data.clientSecret))
+    .then(data => {
+     
+      setClientSecret(data.clientSecret)
+   
+    })
   } , [priceIntoNumber])
+
+
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -77,7 +88,7 @@ const CheckOutFrom = ({booking}) => {
         price:priceIntoNumber,
         transactionId: paymentIntent.id,
         email: buyrEmail,
-        bookingId: produtId
+        bookingId: productId
     }
 
    fetch('http://localhost:5000/payments',{
@@ -99,16 +110,16 @@ const CheckOutFrom = ({booking}) => {
 
   }
   setProcessing(false)
-  console.log("payment intent" ,paymentIntent);
-
+  // console.log("payment intent" ,paymentIntent);
+  
   }
 
 
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className=''>
+            <form className='' onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {
