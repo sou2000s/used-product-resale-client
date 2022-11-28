@@ -57,7 +57,7 @@ const Advertisements = ({product}) => {
           {product.map(pd => !pd.paid && <div className='w-96'>
             <img src={pd.image} className='w-52' alt="" />
             <h3 className='text-xl'>Name: <span className='text-sm'>{pd.productName}</span></h3>
-            <h3 className='text-xl'>Price:  <span className='text-sm'>{pd.productName}rs</span> </h3>
+            <h3 className='text-xl'>Price:  <span className='text-sm'>{pd.price}rs</span> </h3>
             <Link className='btn btn-sm btn-info' to={`/category/${pd.categoryName}`}>Knoe more</Link>
           </div>)}
          
