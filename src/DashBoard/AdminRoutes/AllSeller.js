@@ -87,7 +87,7 @@ const AllSeller = () => {
         <td>{seller.role}</td>
         <td>{seller.email}</td>
         <td>
-        <button className='btn btn-sm btn-success' onClick={()=>handleVerify(seller._id)}>{seller.status==="verified"  ?' verified' : 'veriyseller'}</button>
+        <button className='btn btn-sm btn-success' onClick={()=>handleVerify(seller._id)}>{seller.status==="verified"  ?' verified' : 'verifyseller'}</button>
         <button className='btn btn-sm btn-error' onClick={()=>handleDelte(seller)}>Delete</button>
         
         </td>

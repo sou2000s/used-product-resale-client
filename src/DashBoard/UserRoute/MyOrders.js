@@ -61,9 +61,7 @@ refetch()
                }
               </td>
 
-             { <td>
-                <button onClick={()=>payNow(product)}>check</button>
-              </td>}
+             
              
              
             </tr>)

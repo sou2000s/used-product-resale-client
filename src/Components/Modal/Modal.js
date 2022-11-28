@@ -21,7 +21,7 @@ const Modal = ({boking , setBoking}) => {
   
     getOrders(user,resaleingPrice , productName , _id , image , meetingLocation , buyrPhoneNumber).then((data)=>{
        if(data.acknowledged){
-         toast.success('order placed')
+         toast.success('order booked')
        }
         setBoking(null)
     })
