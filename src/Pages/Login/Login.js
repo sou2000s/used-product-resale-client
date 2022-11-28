@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
@@ -66,7 +66,7 @@ const Login = () => {
             
              <input placeholder="password" type="password" name='password'  className="input  ml-1 input-bordered input-success w-full max-w-xs" />
              <br />
-             
+             <Link to='/register'>New user? Register</Link><br />
              <button type='submit' className='btn mt-5 btn-accent'>Login</button><br />
              <button className='btn btn-success  mt-5' onClick={handleGoogleLogin}>Sign in With google</button>
             </form>

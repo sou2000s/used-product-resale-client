@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { saveUser } from '../../Api/User';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { useToken } from '../../Hooks/useToken';
@@ -149,9 +149,10 @@ const handleGoogleSignIn = () =>{
             
              <input placeholder="password" type="password" name='password'  className="input md:mr-2 mt-6 input-bordered input-success w-full max-w-xs" />
              <br />
-             
+             <Link to='/login'>Allready have account? login</Link> <br />
              <button type='submit' className='btn btn-accent mt-6'>Register</button> <br />
-             <button className='btn btn-success  mt-5' onClick={handleGoogleSignIn}>Sign in With google</button>
+
+             <button className='btn btn-success  mt-5' onClick={handleGoogleSignIn}>Sign up With google</button>
             </form>
   </div>
           
