@@ -22,9 +22,9 @@ const {data:myOrders , refetch} = useQuery({
 })
 
 refetch()
-  const payNow = product =>{
-    console.log(product);
-  }
+  // const payNow = product =>{
+  //   console.log(product);
+  // }
 
 
     return (
