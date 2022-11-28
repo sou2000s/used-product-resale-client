@@ -7,6 +7,7 @@ import AddProducts from "../DashBoard/SellerRoutes/AddProducts";
 import Myproducts from "../DashBoard/SellerRoutes/Myproducts";
 import MyOrders from "../DashBoard/UserRoute/MyOrders";
 import Main from "../Layouts/Main";
+import Blogs from "../Pages/Blogs/Blogs";
 import CategoriousProducts from "../Pages/CategoriousProducts/CategoriousProducts";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
                 },
                 element:<PrivateRoute><CategoriousProducts/></PrivateRoute>
             },
+            {
+                path:'/blogs',
+                element: <Blogs/>
+            }
         ]
     },
     {
