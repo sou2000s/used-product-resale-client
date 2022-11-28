@@ -53,7 +53,12 @@ const handleAddtoAd = product =>{
     body: JSON.stringify(addvertiseProduct)
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => {
+    console.log(data);
+    if(data.acknowledged){
+      toast.success('adeded to advertisements section')
+    }
+  })
 }
 
 

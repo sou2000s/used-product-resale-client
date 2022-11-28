@@ -53,7 +53,7 @@ const handleReportItem = product =>{
         <div className="card-body">
           <h2 className="card-title">{productName}</h2>
           {checkverifyEmail.status === "verified" &&  <p>Upload by verified seller</p>}
-           <p>{sellerEmail}</p>
+           <p>SellerEmail:{sellerEmail}</p>
           <p>Original Price: {originalPrice}Rs/only</p>
           <p>Reselling Price: {resaleingPrice}Rs/only</p>
           <div className='flex'>

@@ -17,12 +17,13 @@ const Login = () => {
         const password = e.target.password.value;
         login(email , password)
         .then(res =>{
-            navigate(from, { replace: true })
+          
          fetch(`https://server-site-used-products.vercel.app/jwt?email=${res.user.email}`)
         .then(res => res.json())
         .then(data=> {
           if(data.accessToken){
             localStorage.setItem('token' , data.accessToken)
+            navigate(from, { replace: true })
           }
         })
         })
@@ -38,7 +39,7 @@ const Login = () => {
       .then(data=> {
         if(data.accessToken){
           localStorage.setItem('token' , data.accessToken)
-        navigate(from, { replace: true }) 
+           navigate(from, { replace: true }) 
           
         }
       }))

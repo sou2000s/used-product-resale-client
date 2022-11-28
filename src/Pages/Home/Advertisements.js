@@ -47,7 +47,7 @@ const Advertisements = ({product}) => {
     return (
     
     
-    <div className=' w-[50%]  mt-10 ml-[20%]'>
+    <div className=' w-[50%]  mt-10 ml-[25%]'>
       
       
      

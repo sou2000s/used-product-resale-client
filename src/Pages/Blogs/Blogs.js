@@ -44,7 +44,7 @@ const Blogs = () => {
 
             </p>
           </div>
-          <div className="md:w-auto  border-2 p-2 border-black rounded-md">
+          <div className="md:w-96  border-2 p-2 border-black rounded-md">
             <h1 className="text-2xl"> React vs. Angular vs. Vue?</h1>
             <p className='mt-4'>
             React is a UI library, Angular is a fully-fledged front-end framework, while Vue.js is a progressive framework. <br />
@@ -52,7 +52,7 @@ const Blogs = () => {
             <strong>structure</strong> <br />
            <strong> Angular</strong> is built entirely in Typescript and every project on Angular is structured in modules, components and services. At least, each module must have a root module and a root component. <br />
          
-           <strong>React</strong> doesn’t propose a specific structure to be followed, and with only a few lines of code you can have a simple React application. The smallest React example could be something like this:const root = ReactDOM.createRoot(document.getElementById('root')); <br />
+           <strong>React</strong> doesn’t propose a specific structure to be followed, and with only a few lines of code you can have a simple React application. The smallest React example could be something like this: const root = ReactDOM.createRoot <br /> (document.getElementById('root')); <br />
            root.render(<h1>Hello world</h1>)
             </p>
           </div>

@@ -8,11 +8,11 @@ const Footer = () => {
               <footer className="  bg-[#0D0D0D] text-white flex justify-center  p-10">
        
         <div className=''>
-          <span className="footer-title">Cardekho</span> 
+          <span className="footer-title">CarFinder</span> 
           <ul>
            <li>About us</li>
            <li>Contact us</li>
-           <li>allrights@cardekho.com </li>
+           <li>allrights@CarFinder.com </li>
           </ul>
         </div> 
         <div className='ml-20'>
