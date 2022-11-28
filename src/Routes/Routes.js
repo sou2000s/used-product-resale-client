@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import ErrorElement from "../Components/ErrorElement/ErrorElement";
 import AllBuyrs from "../DashBoard/AdminRoutes/AllBuyrs";
 import AllSeller from "../DashBoard/AdminRoutes/AllSeller";
+import ReportedProducts from "../DashBoard/AdminRoutes/ReportedProducts";
 import DashBoardLayout from "../DashBoard/DashBoardLayout/DashBoardLayout";
 import Payment from "../DashBoard/Payment/Payment";
 import AddProducts from "../DashBoard/SellerRoutes/AddProducts";
@@ -40,7 +41,7 @@ const routes = createBrowserRouter([
             {
                 path:'/category/:categoryName',
                 loader: ({params}) => {
-                    return fetch(`http://localhost:5000/products/${params.categoryName}`)
+                    return fetch(`https://server-site-used-products.vercel.app/products/${params.categoryName}`)
                 },
                 element:<PrivateRoute><CategoriousProducts/></PrivateRoute>
             },
@@ -63,6 +64,10 @@ const routes = createBrowserRouter([
             element:<AdminRoute><AllBuyrs></AllBuyrs></AdminRoute>
          },
          {
+            path:'reportedProducts',
+            element:<AdminRoute><ReportedProducts></ReportedProducts></AdminRoute>
+         },
+         {
             path:'addProducts',
             element:<SellerRoute><AddProducts/></SellerRoute>
          },
@@ -82,7 +87,7 @@ const routes = createBrowserRouter([
     {
         path:"/payment/:id",
         loader:  ({params})=>{
-            return fetch(`http://localhost:5000/orderdProduct/${params.id}`)
+            return fetch(`https://server-site-used-products.vercel.app/orderdProduct/${params.id}`)
         },
         element:<Payment/>
     }

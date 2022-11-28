@@ -16,7 +16,7 @@ const DashBoardNav = () => {
             {
                 user?.email && userRole==="User" && <>
                 <Link className='bg-[#EDBF69] p-3 rounded-xl border ' to='myOrders'>My orders</Link>
-                <Link className='bg-[#EDBF69] p-3 rounded-xl border ' to='myWishlist'>My wishlist</Link>
+                
                 </>
             }
             
@@ -30,6 +30,7 @@ const DashBoardNav = () => {
             userRole === "admin" && <>
                 <Link  className='ml-4 bg-[#EDBF69] p-3 rounded-xl border' to="allsellers">All sellers</Link>
                 <Link  className='ml-4 bg-[#EDBF69] p-3 rounded-xl border' to="allbuyrs">All buyrs</Link>
+                <Link  className='ml-4 bg-[#EDBF69] p-3 rounded-xl border' to="reportedProducts">Reported Product</Link>
             </>
          }
 

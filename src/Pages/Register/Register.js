@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../../Api/User';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { useToken } from '../../Hooks/useToken';
+import {FcGoogle} from 'react-icons/fc'
+
 
 const Register = () => {
-    const {createUser,setUserNameAndProfile , setUserProfile } = useContext(AuthContext)
+    const {createUser,setUserNameAndProfile , setUserProfile  , googleAuthentication} = useContext(AuthContext)
 
   const navigate = useNavigate()
 //  const [userEmail , setUserEmail] = useState('')
@@ -37,7 +39,7 @@ const Register = () => {
         status: "unverified"
     }
 
-      fetch('http://localhost:5000/users' , {
+      fetch('https://server-site-used-products.vercel.app/users' , {
         method: "PUT",
         headers: {
             'content-type': 'application/json'
@@ -49,7 +51,7 @@ const Register = () => {
      .then(data => {
       if(data.acknowledged){
         toast.success('welcome')
-        fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+        fetch(`https://server-site-used-products.vercel.app/jwt?email=${res.user.email}`)
         .then(res => res.json())
         .then(data=> {
           if(data.accessToken){
@@ -84,33 +86,72 @@ const handleName = (name) =>{
 }
 
 
+const handleGoogleSignIn = () =>{
+    googleAuthentication()
+    .then(res => {
+      const user = {
+        email:res.user.email,
+        name:res.user.displayName,
+        role: "User",
+        status: "unverified"
+    }
+
+      fetch('https://server-site-used-products.vercel.app/users' , {
+        method: "PUT",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(user)
+
+     })
+     .then(res => res.json())
+     .then(data => {
+      if(data.acknowledged){
+        toast.success('welcome')
+        fetch(`https://server-site-used-products.vercel.app/jwt?email=${res.user.email}`)
+        .then(res => res.json())
+        .then(data=> {
+          if(data.accessToken){
+            localStorage.setItem('token' , data.accessToken)
+          }
+        })
+      }
+     })
+     navigate('/')
+    })
+    .catch(error => console.log(error.message))
+}
+
+
+
   return (
-        <div className='text-center '>
+        <div className='text-center  '>
   <div className="mt-9 ">
-  <form onSubmit={handleRegister}>
+  <form onSubmit={handleRegister} className=''>
              <label htmlFor="">Name</label>
-             <input type="text" placeholder="Name" name='name' className="ml-8 input   input-bordered input-success w-full max-w-xs" />
+             <input type="text" placeholder="Name" name='name' className="md:ml-8 input   input-bordered input-success w-full max-w-xs" />
              <br />
              <label htmlFor="">email</label>
           
-             <input placeholder="email" type="email" name='email'  className="input ml-8 mt-6 input-bordered input-success w-full max-w-xs" />             <br />
+             <input placeholder="email" type="email" name='email'  className="input md:ml-8 ml-2 mt-6 input-bordered input-success w-full max-w-xs" />             <br />
              <label htmlFor="">Type</label>
            
               
-             <select name='role' className="select select-success ml-8 w-full mt-6 max-w-xs">
+             <select name='role' className="select select-success md:ml-8 ml-2 w-full mt-6 max-w-xs">
   <option  selected>User</option>
   <option>Seller Accout</option>
   
 </select>
 
              <br />
-             <label htmlFor="">password</label>
+             <label htmlFor="" className=''>password</label>
        
             
-             <input placeholder="password" type="password" name='password'  className="input ml-4 mt-6 input-bordered input-success w-full max-w-xs" />
+             <input placeholder="password" type="password" name='password'  className="input md:mr-2 mt-6 input-bordered input-success w-full max-w-xs" />
              <br />
              
-             <button type='submit' className='btn btn-accent'>Register</button>
+             <button type='submit' className='btn btn-accent mt-6'>Register</button> <br />
+             <button className='btn btn-success  mt-5' onClick={handleGoogleSignIn}>Sign in With google</button>
             </form>
   </div>
           

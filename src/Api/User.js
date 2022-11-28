@@ -11,7 +11,7 @@ export const saveUser =  async (email , name , role) =>{
         status: "unverify"
     }
   
-    const res = await fetch('http://localhost:5000/users' , {
+    const res = await fetch('https://server-site-used-products.vercel.app/users' , {
         method: "PUT",
         headers: {
             'content-type': 'application/json'

@@ -18,7 +18,7 @@ const CategoriousProducts = () => {
 
     return (
         <div className='bg-[#0D0D0D]  text-white'>
-            <h1 className='text-center text-3xl'>{categoryName.categoryName}s</h1>
+            <h1 className='text-center text-3xl'>{categoryName.categoryName}</h1>
              <div className='grid  md:grid-cols-3 md:p-24 gap-3 mt-7'> 
             {
                 data?.map(product =>  <Card key={product._id}  setBoking={setBoking} product={product}></Card>)

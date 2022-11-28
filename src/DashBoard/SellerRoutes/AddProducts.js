@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useNavigation } from "react-router-dom";
+import Spinner from "../../Components/Spinner/Spinner";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const AddProducts = () => {
@@ -63,7 +64,7 @@ const AddProducts = () => {
   
 
 
-    fetch('http://localhost:5000/products' , {
+    fetch('https://server-site-used-products.vercel.app/products' , {
       method: 'POST',
       headers: {
         "content-type": 'application/json',
@@ -126,9 +127,9 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
-        <label htmlFor="">Select Condition</label>
+        <label htmlFor="" >Select Condition</label>
       <br />
-        <select name="condition" id="">
+        <select name="condition" className=" input-bordered input-warning w-full max-w-xs" id="">
             <option >excellent</option>
             <option >good</option>
             <option >fair</option>
@@ -145,7 +146,7 @@ const AddProducts = () => {
               <br />
               <label  htmlFor="">Select category</label>
               <br />
-              <select name="category" className="" id="">
+              <select name="category" className=" input-bordered input-warning w-full max-w-xs" id="">
                 <option>luxury car</option>
                 <option>electric car</option>
                 <option>minibus</option>
@@ -160,7 +161,7 @@ const AddProducts = () => {
           className="input input-bordered input-warning w-full max-w-xs"
         />
         <br />
-        <label htmlFor="">Locationr</label>
+        <label htmlFor="">Location</label>
               <br />
         <input
           type="text"
@@ -182,7 +183,7 @@ const AddProducts = () => {
               <br />
         <textarea className="textarea textarea-warning" placeholder="description" name="description"></textarea>
         <br />
-        {addProductLoading ? <div>UpLoading....</div> : 
+        {addProductLoading ? <div><Spinner/> </div> : 
         <input
           type="submit"
           value="Add product"

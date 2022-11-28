@@ -12,7 +12,7 @@ const Myproducts = () => {
    const {data:myProducts , refetch} = useQuery({
     queryKey: ['products' ],
     queryFn: async()=>{
-        const res = await fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
+        const res = await fetch(`https://server-site-used-products.vercel.app/sellers/products?email=${user?.email}`)
         const data = await res.json()
         return data
     }
@@ -20,7 +20,7 @@ const Myproducts = () => {
    
    
 //    useEffect(()=>{
-//     fetch(`http://localhost:5000/sellers/products?email=${user?.email}`)
+//     fetch(`https://server-site-used-products.vercel.app/sellers/products?email=${user?.email}`)
 //     .then(res =>  res.json())
 //     .then(data => {
 //         console.log(data);
@@ -29,7 +29,7 @@ const Myproducts = () => {
 //    },[user?.email])
 
 
-// http://localhost:5000/
+// https://server-site-used-products.vercel.app/
 
 
 const handleAddtoAd = product =>{
@@ -38,13 +38,14 @@ const handleAddtoAd = product =>{
     productName: product.productName,
     condition: product.condition,
     price: product.resaleingPrice,
-    image: product.image
+    image: product.image,
+    categoryName: product.categoryName
 
 
   }
 
   console.log(product);
-  fetch('http://localhost:5000/advertise' , {
+  fetch('https://server-site-used-products.vercel.app/advertise' , {
     method: "POST",
     headers: {
       "content-type": 'application/json'
@@ -57,7 +58,7 @@ const handleAddtoAd = product =>{
 
 
   //  const handleStatus = id =>{
-  //   fetch(`http://localhost:5000/sellers/products/update/${id}` , {
+  //   fetch(`https://server-site-used-products.vercel.app/sellers/products/update/${id}` , {
   //       method: 'PUT'
   //   })
   //   .then(res => res.json())
@@ -72,7 +73,7 @@ const handleAddtoAd = product =>{
 
    const handleDelte = (id)=>{
 
-     fetch(`http://localhost:5000/sellers/product/delete/${id}` , {
+     fetch(`https://server-site-used-products.vercel.app/sellers/product/delete/${id}` , {
         method: "DELETE"
      })
      .then(res => res.json())
@@ -115,7 +116,7 @@ const handleAddtoAd = product =>{
               </td>
 
               <td>
-              {!product.paid && <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>}
+               <button className='btn btn-sm btn-error' onClick={()=>handleDelte(product._id)}>Delete</button>
               
               </td>
 

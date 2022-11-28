@@ -9,6 +9,15 @@ const AuthProvider = ({children}) => {
     const [userProfile , setUserProfile] = useState() 
     const [loading  , setLoading] = useState(true)
 
+   
+    const googleProvider  = new GoogleAuthProvider()
+
+
+    const googleAuthentication = () =>{
+        setLoading(true)
+        return signInWithPopup(auth , googleProvider)
+    }
+
     const createUser = (email , password )=>{
         setLoading(true)
        return createUserWithEmailAndPassword(auth , email , password )
@@ -39,7 +48,7 @@ const AuthProvider = ({children}) => {
         return ()=> unsubscribe()
     } , [userProfile])
  
-    const authInfo = {createUser ,setUserNameAndProfile , logout , loading , setLoading , login , user , setUserProfile  , setUser} 
+    const authInfo = {createUser ,setUserNameAndProfile , logout , loading , setLoading , login , user , setUserProfile  , setUser , googleAuthentication} 
 
 
 

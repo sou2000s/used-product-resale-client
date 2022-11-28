@@ -1,5 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Card = ({product ,setBoking}) => {
@@ -10,7 +12,7 @@ const Card = ({product ,setBoking}) => {
   
 
     useEffect(()=>{
-      fetch(`http://localhost:5000/sellers?email=${sellerEmail}`)
+      fetch(`https://server-site-used-products.vercel.app/sellers?email=${sellerEmail}`)
       .then(res => res.json())
       .then(data=> {
         
@@ -20,6 +22,31 @@ const Card = ({product ,setBoking}) => {
 
 console.log(product);
 console.log(checkverifyEmail);
+
+const handleReportItem = product =>{
+  console.log(product);
+  const reportedProduct = {
+     productId : product._id,
+     productName: product.productName
+    }
+
+  fetch('https://server-site-used-products.vercel.app/reportItem' , {
+    method: 'PUT',
+    headers:{
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(reportedProduct)
+  })
+  .then(res => res.json())
+  .then(data =>{
+    console.log(data);
+    if(data.acknowledged){
+      toast.success('reported to admin')
+    }
+  })
+
+}
+
     return (
         <div className="   rounded-lg border ">
         <figure><img src={image} className="w-full" alt="" /></figure>
@@ -39,6 +66,7 @@ console.log(checkverifyEmail);
           <p>Description: {description}</p>
           <p>Posted date: {postDate?.slice(0,10)}</p>
           <p>Posted time: {postTime}</p>
+          <button className='text-warnig text-2xl text-red-500' onClick={()=>handleReportItem(product)}>Report</button>
           {paid && <p>sold</p>}
           <div className="card-actions justify-end">
           <label onClick={()=> setBoking(product)} htmlFor="my-modal"   className={`${paid ? "btn btn-error" :" btn btn-warning"}`} >{paid ? "soldout" : "book now"}</label>

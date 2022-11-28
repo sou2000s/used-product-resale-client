@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
     const [userRole , setuserRole] = useState('')
     const [userRoleLoading , setuserRoleLoading ] = useState(true)
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/role/${email}`)
+        fetch(`https://server-site-used-products.vercel.app/users/role/${email}`)
         .then(res => res.json())
         .then(data =>{
             console.log(data);

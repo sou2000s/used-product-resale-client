@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const CheckOutFrom = ({booking}) => {
     const [carderror , setCardError] = useState('')
@@ -21,7 +22,7 @@ console.log(productId , buyrEmail , buyrName , priceIntoNumber);
 
 
   useEffect(()=>{
-    fetch('http://localhost:5000/create-payment-intent',{
+    fetch('https://server-site-used-products.vercel.app/create-payment-intent',{
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -91,7 +92,7 @@ console.log(productId , buyrEmail , buyrName , priceIntoNumber);
         bookingId: productId
     }
 
-   fetch('http://localhost:5000/payments',{
+   fetch('https://server-site-used-products.vercel.app/payments',{
     method: 'POST',
     headers:{
         'content-type': 'application/json',
@@ -104,6 +105,7 @@ console.log(productId , buyrEmail , buyrName , priceIntoNumber);
     console.log(data);
     if(data.insertedId){
         setSuccess("Congrats your payment completed")
+        toast.success('Payment Done')
         setTransactionId(paymentIntent.id)
     }
    })
@@ -137,8 +139,8 @@ console.log(productId , buyrEmail , buyrName , priceIntoNumber);
         }}
       />
       <button className='btn btn-sm mt-5 btn-primary' 
-      type="submit" disabled={!stripe}>
-        Pay
+      type="submit" disabled={!stripe }>
+       {processing ? 'paying....' : "pay"}
       </button>
     </form>
     <p className='text-red-500'>{carderror}</p>
