@@ -33,8 +33,8 @@ fetch('http://localhost:5000/advertiseProducts')
     <img src={bannerCar} className=" w-1/2 " alt='' />
     <div>
       <h1 className="md:text-5xl font-bold">Get Best Secondhand Cars Here</h1>
-      <p className="py-1">Quality check</p>
-      <p className="py-1">paperwork</p>
+      <p className="py-1">8+ years in this field</p>
+      <p className="py-1">8k+ car sale</p>
       <p className="py-1">24/7 hour service</p>
       
     </div>
@@ -54,19 +54,19 @@ fetch('http://localhost:5000/advertiseProducts')
 
 
   <div className='md:mt-32'>
-  <h1 className='text-center pb-4 text-3xl'>We make sure</h1>
-    <ul className='md:flex justify-evenly  md:p-0 p-5 '>
+  <h1 className='text-center pb-4 text-4xl'>How it works</h1>
+    <ul className='md:flex justify-evenly  md:p-0 mt-5 p-5 '>
       <li className='p-6  md:rounded-none rounded-md bg-[#3c2f2f]'>
        <img src={carIngineIco} className="md:w-40 w-10" alt="" />
         
           <p>  Full engine checkup  </p>
       </li>
-      <li className='p-6  md:rounded-none rounded-md bg-[#3c2f2f]'>
+      <li className='p-6 md:mt-0 mt-5 md:rounded-none rounded-md bg-[#3c2f2f]'>
        <img src={carCheckIco} className="md:w-40 w-10" alt="" />
         
           <p> Conditon check  </p>
       </li>
-      <li className='p-6  md:rounded-none rounded-md bg-[#3c2f2f]'>
+      <li className='p-6  md:mt-0 mt-5  md:rounded-none rounded-md bg-[#3c2f2f]'>
        <img src={paperCheckico} className="md:w-40 w-10" alt="" />
         
           <p>  Valid paper check  </p>
@@ -92,7 +92,7 @@ fetch('http://localhost:5000/advertiseProducts')
 
 
         {/* <hr className='mt-14' /> */}
-          <div>
+          <div className='md:py-32'>
           <div className="hero  py-12 ">
   <div className="hero-content flex-col lg:flex-row">
     <img src='https://images.unsplash.com/photo-1615906655593-ad0386982a0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' alt='' className="md:max-w-sm rounded-lg shadow-2xl" />
