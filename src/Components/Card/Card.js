@@ -61,7 +61,7 @@ const handleReportItem = product =>{
             {checkverifyEmail.status === "verified" && <img src="https://img.icons8.com/fluency/48/null/instagram-check-mark.png" className='md:w-8  mr-[183px]' alt=''/> }
           </div>
           <p>Seller Number: {mobileNumber}</p>
-          <p>Location for pickup: {location}</p>
+          <p>Seller location: {location}</p>
           <p>Condition: {condition}</p>
           <p>Description: {description}</p>
           <p>Posted date: {postDate?.slice(0,10)}</p>
