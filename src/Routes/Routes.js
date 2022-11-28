@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorElement from "../Components/ErrorElement/ErrorElement";
 import AllBuyrs from "../DashBoard/AdminRoutes/AllBuyrs";
 import AllSeller from "../DashBoard/AdminRoutes/AllSeller";
 import DashBoardLayout from "../DashBoard/DashBoardLayout/DashBoardLayout";
@@ -21,6 +22,7 @@ const routes = createBrowserRouter([
     {
         path:"/",
         element:<Main/>,
+        errorElement : <ErrorElement/> ,
         children:[
             {
                 path:"/",

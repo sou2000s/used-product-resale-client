@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Card from '../../Components/Card/Card';
+import Footer from '../../Components/Footer/Footer';
 import Modal from '../../Components/Modal/Modal';
 
 const CategoriousProducts = () => {
@@ -23,6 +24,10 @@ const CategoriousProducts = () => {
                 data?.map(product =>  <Card key={product._id}  setBoking={setBoking} product={product}></Card>)
             }
              {boking && <Modal setBoking={setBoking} boking={boking}/>}  
+        </div>
+
+        <div className='md:mt-[20%] mt-[81%]'>
+            <Footer></Footer>
         </div>
         </div>
        

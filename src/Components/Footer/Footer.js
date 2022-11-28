@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div>
         <hr />
-              <footer className="  flex justify-center  p-10">
+              <footer className="  bg-[#0D0D0D] text-white flex justify-center  p-10">
        
         <div className=''>
           <span className="footer-title">Cardekho</span> 

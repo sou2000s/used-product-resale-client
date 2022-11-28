@@ -20,8 +20,8 @@ const Navbar = () => {
      
  
      {user?.uid ?  <>
-        <li><Link className='ml-5' onClick={handleLogout}>Logout</Link></li>
-        <li>  <Link className='ml-5' to='/dashboard'>DashBoard</Link>  </li> 
+        <li><Link className='' onClick={handleLogout}>Logout</Link></li>
+        <li>  <Link className='' to='/dashboard'>DashBoard</Link>  </li> 
  
      </>  :
        
@@ -34,7 +34,7 @@ const Navbar = () => {
   </>
 
     return (
-        <div className=''>
+        <div className=' bg-[#0D0D0D]'>
             {/* <ul className='flex  '>
             <Link to='/'>Home</Link>
             
@@ -53,7 +53,7 @@ const Navbar = () => {
             <Link className=''>Cardekho</Link>
             </ul> */}
 
-            <div className="navbar text-white bg-[#0D0D0D]">
+            <div className="navbar text-white">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -74,7 +74,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#0D0D0D] rounded-box w-52"
           >
               {menuItems}
           </ul>
