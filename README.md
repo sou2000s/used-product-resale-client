@@ -27,4 +27,5 @@ site(https://use-product-resale.web.app/).
 ## vercel for api hosting.
 ## firebase for authentication.
 ## stripe for payment
+## mongo db for database
 
