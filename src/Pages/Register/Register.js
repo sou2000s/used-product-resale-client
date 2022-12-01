@@ -9,7 +9,7 @@ import {FcGoogle} from 'react-icons/fc'
 
 const Register = () => {
     const {createUser,setUserNameAndProfile , setUserProfile  , googleAuthentication} = useContext(AuthContext)
-
+    const [error , setError] = useState('')
   const navigate = useNavigate()
 //  const [userEmail , setUserEmail] = useState('')
 //  const [token] = useToken(userEmail)
@@ -32,6 +32,7 @@ const Register = () => {
       //    console.log(data)
       //    setUserEmail(res.user.email)
       //   })
+      setError('')
       const user = {
         email:res.user.email,
         name:name,
@@ -68,6 +69,7 @@ const Register = () => {
      })
      .catch(err => {
         console.log(err.message);
+        setError(err.message)
      })
 
 
@@ -148,6 +150,7 @@ const handleGoogleSignIn = () =>{
        
             
              <input placeholder="password" type="password" name='password'  className="input md:mr-2 mt-6 input-bordered input-success w-full max-w-xs" />
+             <p className='text-red-600'>{error}</p>
              <br />
              <Link to='/login'>Allready have account? login</Link> <br />
              <button type='submit' className='btn btn-accent mt-6'>Register</button> <br />
