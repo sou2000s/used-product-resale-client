@@ -23,7 +23,11 @@ const Categories = () => {
              {
                 categories?.map((category , i) => <div className='p-5 mt-6' key={i}>
              
-                <Link className='mt-6  bg-[#120f0a] rounded-xl p-2 md:p-5 ' to={`/category/${category.categoryName}`} key={category._id}>{category.categoryName}</Link>
+                <Link className='mt-6  bg-[#120f0a] ' to={`/category/${category.categoryName}`} key={category._id}>
+
+                    <img src={category.image} className="w-40 h-40 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 duration-300" alt="" />
+                    <p>{category.categoryName}</p>  
+                </Link>
               
                 </div>)
              }

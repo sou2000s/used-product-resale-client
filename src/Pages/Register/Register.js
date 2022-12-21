@@ -121,7 +121,7 @@ const handleGoogleSignIn = () =>{
      })
      navigate('/')
     })
-    .catch(error => console.log(error.message))
+    .catch(error => setError(error.message))
 }
 
 
