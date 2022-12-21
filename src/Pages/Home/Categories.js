@@ -25,7 +25,7 @@ const Categories = () => {
              
                 <Link className='mt-6  bg-[#120f0a] ' to={`/category/${category.categoryName}`} key={category._id}>
 
-                    <img src={category.image} className="w-40 h-40 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 duration-300" alt="" />
+                    <img src={category.image} className="w-40 h-40 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 duration-300" alt={category.categoryName} />
                     <p>{category.categoryName}</p>  
                 </Link>
               
